@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
+class DeviseCreateOrderDetails < ActiveRecord::Migration[6.1]
   def change
-    create_table :customers do |t|
+    create_table :order_details do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -13,18 +13,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
 
       ## Rememberable
       t.datetime :remember_created_at
-      ##public/registrations 
-      t.string :last_name,null: false
-      t.string :first_name,null: false
-      t.string :last_name_kana,null: false
-      t.string :first_name_kana,null: false
-      t.string :postal_code,null: false
-      t.string :address,null: false
-      t.string :telephone_number,null: false
-      t.timestamps null: false
-    end
 
-      
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
       # t.datetime :current_sign_in_at
@@ -42,9 +31,14 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-    add_index :customers, :email,                unique: true
-    add_index :customers, :reset_password_token, unique: true
-    # add_index :customers, :confirmation_token,   unique: true
-    # add_index :customers, :unlock_token,         unique: true
+
+
+      t.timestamps null: false
+    end
+
+    add_index :order_details, :email,                unique: true
+    add_index :order_details, :reset_password_token, unique: true
+    # add_index :order_details, :confirmation_token,   unique: true
+    # add_index :order_details, :unlock_token,         unique: true
   end
 end

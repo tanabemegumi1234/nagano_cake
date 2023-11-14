@@ -1,4 +1,4 @@
-class CreateItems < ActiveRecord::Migration[6.1]
+class DeviseCreateItems < ActiveRecord::Migration[6.1]
   def change
     create_table :items do |t|
       ## Database authenticatable

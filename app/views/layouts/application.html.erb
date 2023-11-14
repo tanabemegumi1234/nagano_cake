@@ -9,17 +9,45 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  
+  
 
   <body>
     <header>
+     <!-- 顧客でログインしている時 -->
     <% if admin_signed_in? %>
       <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+        <%= link_to "マイページ",  admin_customers_my_page_path %>
       </li>
-    <%# elsif customer_signed_in %>
-      
+      <li>
+        <%= link_to "管理者ログイン", destroy_admin_session_path, method: :delete %>
+      </li>
+      <!-- 管理者でログインしている時 -->
+    <% elsif customer_signed_in? %>
+    　<li>
+        <%= link_to "About", about_path %>
+      </li>
+      <li>
+        <%= link_to "商品一覧", items_path %>
+      </li>
+       <li>
+        <%= link_to "新規登録",  admin_items_new_path %>
+      </li>
+      <li>
+        <%= link_to "ログイン", new_admin_session_path %>
+      </li>
+      <!-- ログインしていない時 -->
     <% else %>
-    <li>
+    　<li>
+        <%= link_to "About",  about_path %>
+      </li>
+      <li>
+        <%= link_to "商品一覧",  items_path %>
+      </li>
+      <li>
+        <%= link_to "新規登録",  new_customer_registration_path %>
+      </li>
+    　<li>
         <%= link_to "ログイン", new_admin_session_path %>
       </li>
     <% end %>
