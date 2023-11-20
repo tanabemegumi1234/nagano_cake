@@ -14,32 +14,37 @@
 
   <body>
     <header>
-     <!-- 顧客でログインしている時 -->
+      <!-- admin管理者でログインしている時 -->
     <% if admin_signed_in? %>
       <li>
-        <%= link_to "マイページ",  admin_customers_my_page_path %>
+        <%= link_to "商品一覧", admin_items_path %>
       </li>
       <li>
-        <%= link_to "管理者ログイン", destroy_admin_session_path, method: :delete %>
+        <%= link_to "会員一覧", admin_customers_path %>
       </li>
-      <!-- 管理者でログインしている時 -->
+      <li>
+        <%= link_to "注文履歴一覧", admin_path %>
+      </li>
+    　<li>
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+      </li>
+     <!-- 顧客でログインしている時 -->
     <% elsif customer_signed_in? %>
-    　<li>
-        <%= link_to "About", about_path %>
+      <li>
+        <%= link_to "マイページ",  customers_my_page_path %>
       </li>
       <li>
-        <%= link_to "商品一覧", items_path %>
+        <%= link_to "商品一覧",  items_path %>
       </li>
-       <li>
-        <%= link_to "新規登録",  admin_items_new_path %>
-      </li>
+       <!-- カートのリンク -->
       <li>
-        <%= link_to "ログイン", new_admin_session_path %>
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       </li>
+      
       <!-- ログインしていない時 -->
-    <% else %>
-    　<li>
-        <%= link_to "About",  about_path %>
+          <% else %>
+      <li>
+        <%= link_to "About", about_path %>
       </li>
       <li>
         <%= link_to "商品一覧",  items_path %>
@@ -47,8 +52,8 @@
       <li>
         <%= link_to "新規登録",  new_customer_registration_path %>
       </li>
-    　<li>
-        <%= link_to "ログイン", new_admin_session_path %>
+      <li>
+        <%= link_to "ログイン",  new_customer_session_path %>
       </li>
     <% end %>
   </header>
