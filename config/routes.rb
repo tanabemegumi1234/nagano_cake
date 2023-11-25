@@ -19,9 +19,8 @@ Rails.application.routes.draw do
   }
   
   namespace :admin do
-    get '/items/new'  => 'items#new'
-    get 'items' => 'items#index'
     get 'customers' => 'customers#index'
+    resources :items, only: [:new, :create, :index, :show,:edit,:update]
   end
   
   scope module: :public do
@@ -30,7 +29,10 @@ Rails.application.routes.draw do
     get '/customers/my_page'  => 'customers#show'
     get '/customers/information/edit' => 'customers#edit'
     patch '/customers/information' => 'customers#update'
+    get  '/customers/quit' => 'customers#quit'# 退会確認画面
+    patch  '/customers/withdraw' => 'customers#withdraw'# 論理削除用のルーティング
     #resources :addresses,only: [:index, :create, :edit, :update, :destroy]
+    get  '/items/:id' =>'items#show',as: 'item'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
