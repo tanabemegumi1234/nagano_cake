@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   get 'admin'  => 'admin/homes#top'
   devise_for :order_details
   devise_for :orders
-  devise_for :cart_items
 
   # 顧客用
   # URL /customers/sign_in ...
@@ -21,6 +20,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'customers' => 'customers#index'
     resources :items, only: [:new, :create, :index, :show,:edit,:update]
+    resources :customers, only: [:index, :show,:edit,:update]
   end
   
   scope module: :public do
@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     patch  '/customers/withdraw' => 'customers#withdraw'# 論理削除用のルーティング
     #resources :addresses,only: [:index, :create, :edit, :update, :destroy]
     get  '/items/:id' =>'items#show',as: 'item'
+    get  '/orders' =>'orders#index'
+    resources :cart_items, only: [:index, :create, :destroy, :update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

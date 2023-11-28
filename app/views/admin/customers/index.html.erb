@@ -1,1 +1,11 @@
 <h1>会員一覧</h1>
+<% @customer.each do |customer| %>
+<p>会員ID</p>
+  <%= customer.id %>
+<p>氏名</p>
+  <%= link_to admin_customer_path(customer)do %>
+    <%= customer.last_name %><%= customer.first_name %>
+  <% end %>
+<p>メールアドレス</p>
+ <%= customer.email %>
+<% end %>
