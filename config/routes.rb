@@ -34,7 +34,10 @@ Rails.application.routes.draw do
     #resources :addresses,only: [:index, :create, :edit, :update, :destroy]
     get  '/items/:id' =>'items#show',as: 'item'
     get  '/orders' =>'orders#index'
-    resources :cart_items, only: [:index, :create, :destroy, :update]
+    resources :cart_items, only: [:index, :create, :update]
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
+    delete '/cart_items/:id' => 'cart_items#destroy', as: 'destroy'
+    resources :orders, only: [:new]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
