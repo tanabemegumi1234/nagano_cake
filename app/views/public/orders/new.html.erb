@@ -1,1 +1,30 @@
-<h1>注文情報</h1>
+<h1>注文情報入力</h1>
+
+
+<%= form_with model: @order, url: '/orders/confirm' do |f| %>
+<table>
+<tr>支払方法</tr>
+<tr>
+<td>
+<%= f.radio_button :payment_method, "credit_card" %>
+<%= f.label :payment_method_credit_card, "クレジットカード" %>
+</td>
+</tr>
+<tr>
+<td>
+<%= f.radio_button :payment_method, "transfer" %>
+<%= f.label :payment_method_transfer, "銀行振込" %>
+</td>
+</tr>
+
+<tr>
+<td>お届け先</td>
+</tr>
+<tr>
+<td><%= @customer.address%></td>
+</tr>
+<tr>
+<td><%= f.submit "確認画面へ進む" %></td>
+</tr>
+<% end %>
+</table>

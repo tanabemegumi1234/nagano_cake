@@ -36,7 +36,10 @@
 <th>メールアドレス</th>
 <td><%= @customer.email %></td>
 </tr>
-
+<tr>
+<th>会員ステータス</th>
+<th><%= @customer.customer_status %></th>
+</tr>
 </table>
 <%= link_to '編集する', edit_admin_customer_path %>
 <%= link_to '注文履歴一覧を見る', admin_path %>

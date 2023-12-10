@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :addresses
   root to:'public/homes#top'
   get 'admin'  => 'admin/homes#top'
   devise_for :order_details
@@ -37,7 +38,8 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
     delete '/cart_items/:id' => 'cart_items#destroy', as: 'destroy'
-    resources :orders, only: [:new]
+    post '/orders/confirm' => 'orders#confirm'
+    resources :orders, only: [:new,:show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -5,5 +5,6 @@
 
   <strong>商品名 </strong><span><%= @item.name %></span>
   <strong>商品説明 </strong><span><%= @item.introduction %></span>
-  <strong>税抜価格 </strong><span><%= @item.price %>円</span>
+  <strong>税込価格 </strong><span><%= (@item.price* 1.1).floor %>円</span>
+  <strong>(税抜価格) </strong><span>(<%= @item.price %>円)</span>
 <%= link_to '編集する', edit_admin_item_path %>

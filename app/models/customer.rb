@@ -5,5 +5,11 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          # is_deletedがfalseならtrueを返すようにしている
-  
+  def customer_status
+    if is_deleted == true
+      "退会"
+    else
+      "有効"
+    end
+  end
 end
