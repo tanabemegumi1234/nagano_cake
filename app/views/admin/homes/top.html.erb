@@ -1,2 +1,15 @@
-
 <h1>注文履歴一覧</h1>
+<table>
+  <tr>
+    <td>購入日時</td>
+    <td>購入者</td>
+    <td>注文個数</td>
+  </tr>
+  <% @order.each do |order| %>
+  <tr>
+  <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'),admin_orders_path(order.id) %></td>
+  <td><%=order.shipping_name %></td>
+  <td><%= order.order_details.sum(:amount) %></td>
+  <% end %>
+
+</table>

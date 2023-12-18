@@ -2,8 +2,8 @@
 <%= link_to "商品新規登録", new_admin_item_path %>
 
 <% @item.each do |item| %>
-　 <p>商品ID</p>
-　 <%= item.id %>
+  <p>商品ID</p>
+  <%= item.id %>
   <p>商品名</p>
   <%= link_to item.name,admin_item_path(item.id) %>
   <p>税抜価格</p>

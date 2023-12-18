@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :addresses
   root to:'public/homes#top'
   get 'admin'  => 'admin/homes#top'
-  devise_for :order_details
-  devise_for :orders
 
   # 顧客用
   # URL /customers/sign_in ...
@@ -22,6 +19,8 @@ Rails.application.routes.draw do
     get 'customers' => 'customers#index'
     resources :items, only: [:new, :create, :index, :show,:edit,:update]
     resources :customers, only: [:index, :show,:edit,:update]
+    get '/admin' => 'homes#top'
+    get '/orders/:id'  => 'orders#show',as: 'orders'
   end
   
   scope module: :public do
@@ -39,7 +38,8 @@ Rails.application.routes.draw do
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
     delete '/cart_items/:id' => 'cart_items#destroy', as: 'destroy'
     post '/orders/confirm' => 'orders#confirm'
-    resources :orders, only: [:new,:show]
+    resources :orders, only: [:new,:show,:create]
+    get '/orders/thanx' => 'orders#thanx'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

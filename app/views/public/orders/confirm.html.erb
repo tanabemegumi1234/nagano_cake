@@ -1,3 +1,4 @@
+<%= form_with model: @order, url:  orders_path , local: true do |f| %>
 <h1>注文情報確認</h1>
 <table>
 <tr>
@@ -28,11 +29,24 @@
 <td><%= @total += 800 %></td>
 </tr>
 </table>
+<table>
+<tr>
 <td>支払方法</td>
-<%= @orde.payment_method　%>
-
+<td><%= @order.payment_method_i18n%></td>
+</tr>
+<tr>
 <td>お届け先</td>
-<%= @customer.address%>
-<%= @customer.payment_method%>
-
-
+<td><%= @customer.address%></td>
+<td><%= @customer.last_name %><%= @customer.first_name %></td>
+</tr>
+</table>
+ <%= f.hidden_field :customer_id, value: current_customer.id %>
+  <%= f.hidden_field :payment_method, value:  @order.payment_method %>
+  <%= f.hidden_field :postage, value: 800 %>
+  <%= f.hidden_field :shipping_postal_code, value: @customer.postal_code %>
+  <%= f.hidden_field :total_billing_amount, value: @total + 800%>
+  <%= f.hidden_field :shipping_address, value: @customer.address %>
+  <%= f.hidden_field :shipping_name, value: @customer.last_name+@customer.first_name %>
+ 
+<%= f.submit "確認画面へ進む" %>
+<% end %>
