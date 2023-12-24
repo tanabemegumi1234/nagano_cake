@@ -1,5 +1,6 @@
-<h1>注文履歴画面</h1>
-<table>
+<div class="container">
+<h2>注文履歴画面</h2>
+<table class="table table-bordered">
 <tr>
 <th>注文日</th>
 <th>配送先</th>
@@ -7,13 +8,11 @@
 <th>支払金額</th>
 <th>注文詳細</th>
 </tr>
-</table>
 
-<table>  
 <% @order.each do |order| %>
 <tr>
 <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-<td><%=order.shipping_postal_code%><%=order.shipping_address%></td>
+<td>〒<%=order.shipping_postal_code%><%=order.shipping_address%></td>
 
  <% order.order_details.each do |order_detail| %>
 <td> <%= order_detail.item.name %></td>
@@ -24,3 +23,4 @@
 <% end %>
 
 </table>
+</div>

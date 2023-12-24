@@ -1,13 +1,23 @@
- <div style="padding-left:20%;">
-  <%= image_tag url_for(@item.image), class: 'img-fluid', style: 'width: 35%;' %>
-  </div>
+ <div class="container">
+ <div style="text-align: center;">
+  <%= image_tag @item.get_item_image(100,100) %><div>
+  <div class="container text-center">
   <table>
-    <tr><%= @item.name %></tr>
-    <tr><%= @item.introduction %></tr>
-    <tr><%= @item.price %>円</tr>
-  </table>
+    <tr>
+     <h2><%= @item.name %></h2>
+    </tr>
+    <tr>
+     <h4><%= @item.introduction %></h4>
+     </tr>
+    <tr>
+     <h4>￥<%= (@item.price* 1.1).floor %>(税込)</h4>
+     </tr>
 <%= form_with model: @cart_item do |f| %>
 <%= f.hidden_field :item_id, :value => @item.id %>
-<%= f.select :amount, *[1..10] %>
-<%= f.submit "カートに入れる" %>
+<tr>
+ <h4><%= f.select :amount, *[1..10] %><%= f.submit "カートに入れる" %></h4>
+ </tr>
+
 <% end %>
+</table>
+</div>

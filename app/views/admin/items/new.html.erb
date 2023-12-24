@@ -1,18 +1,26 @@
+<div class="container">
 <h1>商品新規登録</h1>
-<%= form_with model: @item, url: '/admin/items', method: :post do |f| %>
-<h4>画像</h4>
-  <%= f.file_field :image, accept: "image/*",size: "400x300" %>
+<table>
+<%= form_for(@item, url:admin_items_path) do |f| %>
 <tr>
-  <th class="table-secondary w-25">商品名</th> 
-  <%= f.text_field :name %>
+<th>画像</th>
+  <td><%= f.file_field :image, accept: "image/*",size: "400x300" %></td>
 </tr>
 <tr>
-  <th class="table-secondary w-25">商品説明</th> 
-  <%= f.text_field :introduction %>
+  <th>商品名</th> 
+  <td><%= f.text_field :name %></td>
 </tr>
 <tr>
-  <th class="table-secondary w-25">税抜価格</th> 
-  <%= f.text_field :price %>円
+  <th>商品説明</th> 
+  <td><%= f.text_field :introduction %></td>
 </tr>
-<%= f.submit '新規登録' %>
+<tr>
+  <th>税抜価格</th> 
+  <td><%= f.text_field :price %>円</td>
+</tr>
+<tr>
+<td><%= f.submit '新規登録',class:"btn btn-success" %></td>
+</tr>
 <% end %>
+</table>
+</div>

@@ -1,5 +1,6 @@
+<div class="container">
 <h1>注文履歴一覧</h1>
-<table>
+<table class="table">
   <tr>
     <td>購入日時</td>
     <td>購入者</td>
@@ -11,5 +12,5 @@
   <td><%=order.shipping_name %></td>
   <td><%= order.order_details.sum(:amount) %></td>
   <% end %>
-
 </table>
+</div>

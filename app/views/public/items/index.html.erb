@@ -1,8 +1,21 @@
+<div class="container">
+  <div class="row">
+  <div class="col-xs-1">
+  </div>
+  　</div>
 <h1>商品一覧</h1>
+
+  <div class="row">
   <% @items.each do |item| %>
-　<%= image_tag item.image, size: "200x200" %>
-  <p>商品名</p>
-  <%= link_to item.name,item_path(item.id) %>
-  <p>税抜価格</p>
-  <div><%= item.price %><div>
+  <%= link_to item_path(item) do%>
+  <%= image_tag item.get_item_image(150,100) %>
   <% end %>
+   <div class="col align-self-end">
+ <table>
+  <tr>商品名<%= link_to item.name,item_path(item.id) %></tr>
+  <tr>¥<%= item.price %></tr>
+  </table>
+  </div>
+  <% end %>
+</div>
+ </div>

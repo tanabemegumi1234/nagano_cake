@@ -1,7 +1,7 @@
-<h1><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h1>
+<div class="container">
+<h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h2>
 
 <table>
-  
 <tr>
 <th>会員ID</th>
 <td><%= @customer.id %></td>
@@ -41,5 +41,6 @@
 <th><%= @customer.customer_status %></th>
 </tr>
 </table>
-<%= link_to '編集する', edit_admin_customer_path %>
-<%= link_to '注文履歴一覧を見る', admin_path %>
+<%= link_to '編集する', edit_admin_customer_path,class:"btn btn-success"  %>
+<%= link_to '注文履歴一覧を見る', admin_path,class:"btn btn-primary" %>
+</div>

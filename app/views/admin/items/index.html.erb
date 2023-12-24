@@ -1,13 +1,18 @@
+<div class="container">
 <h1>商品一覧</h1>
-<%= link_to "商品新規登録", new_admin_item_path %>
-
+<%= link_to "商品新規登録", new_admin_item_path,class:"fa-solid fa-circle-plus"%>
+<table class="table">
+ <tr>
+  <td>商品ID</td>
+  <td>商品名</td>
+  <td>税抜価格</td>
+</tr>
 <% @item.each do |item| %>
-  <p>商品ID</p>
-  <%= item.id %>
-  <p>商品名</p>
-  <%= link_to item.name,admin_item_path(item.id) %>
-  <p>税抜価格</p>
-  <span><%= item.price %></span>
-   
-  
-<% end %>
+  <tr>
+  <td><%= item.id %></td>
+  <td><%= link_to item.name,admin_item_path(item.id) %></td>
+  <td><%= item.price %></td>
+  </tr>
+  <% end %>
+  </table>
+  </div>

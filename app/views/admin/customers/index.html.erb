@@ -1,13 +1,23 @@
+<div class="container">
 <h1>会員一覧</h1>
+<table class="table">
+<tr>
+  <td>会員ID</td>
+  <td>氏名</td>
+  <td>メールアドレ</td>
+  <td>ステータス</td>
+</tr>
 <% @customer.each do |customer| %>
-<p>会員ID</p>
-  <%= customer.id %>
-<p>氏名</p>
+<tr>
+  <td><%= customer.id %></td>
+  <td>
   <%= link_to admin_customer_path(customer)do %>
-    <%= customer.last_name %><%= customer.first_name %>
+  <%= customer.last_name %><%= customer.first_name %>
   <% end %>
-<p>メールアドレス</p>
- <%= customer.email %>
-<th>ステータス</th>
-<td><%= customer.customer_status %></td>
-<% end %>
+  </td>
+  <td><%= customer.email %></td>
+  <td><%= customer.customer_status %></td>
+  <% end %>
+</tr>
+</table>
+</div>

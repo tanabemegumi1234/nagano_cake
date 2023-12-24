@@ -1,4 +1,5 @@
-<h1>編集</h1>
+<div class="container">
+<h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
 
 
 <%= form_with model: @customer,url: admin_customer_path(@customer.id), method: :patch do |f| %>
@@ -43,5 +44,6 @@
     </td>
   </tr>
 </table>
-<%= f.submit '変更を保存' %>
+<%= f.submit '変更を保存',class:"btn btn-success" %>
 <% end %>
+</div>

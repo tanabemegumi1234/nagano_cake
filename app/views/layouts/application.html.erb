@@ -10,10 +10,19 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  
- 
+
+
   <body>
     <header>
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+      <a class="navbar-brand" href="/">NaganoCake</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+     <div class="collapse navbar-collapse" id="navbarNavDropdown">
+   <ul class="navbar-nav ml-auto">
+        
       <!-- admin管理者でログインしている時 -->
     <% if admin_signed_in? %>
       <li>
@@ -25,7 +34,7 @@
       <li>
         <%= link_to "注文履歴一覧", admin_path %>
       </li>
-    　<li>
+     <li>
       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
       </li>
      <!-- 顧客でログインしている時 -->
@@ -37,10 +46,13 @@
         <%= link_to "商品一覧",  items_path %>
       </li>
        <!-- カートのリンク -->
+       <li>
+        <%= link_to "カート",  cart_items_path %>
+      </li>
       <li>
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       </li>
-      
+
       <!-- ログインしていない時 -->
           <% else %>
       <li>
@@ -56,8 +68,11 @@
         <%= link_to "ログイン",  new_customer_session_path %>
       </li>
     <% end %>
+    </div>
+  
+  </nav>
   </header>
     <%= yield %>
+  
   </body>
 </html>
-     
